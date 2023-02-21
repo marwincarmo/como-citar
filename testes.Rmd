@@ -1,0 +1,18 @@
+---
+output:
+  html_document:
+    theme: null
+    mathjax: null
+    citation_package: biblatex
+    biblio-style: abnt
+    biblatexoptions: [backend=biber, maxbibnames=999]
+bibliography: "biblatexExamples.bib"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, eval=TRUE, message=FALSE, warning=FALSE)
+```
+
+
+Teste [@CitekeyPhdthesis]
+

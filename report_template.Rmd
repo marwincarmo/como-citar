@@ -1,0 +1,40 @@
+---
+output:
+  html_document:
+        theme: null
+        mathjax: null
+        citation_package: biblatex
+params:
+    norma: null
+    referencias: null
+bibliography: biblatexExamples.bib
+csl: styles/`r params$norma`
+lang: pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, eval=TRUE, message=FALSE, warning=FALSE)
+```
+
+A norma escolhida foi `r params$norma`.  
+A referência escolhida foi `r params$referencias`
+
+- **Citação entre parêntesis**: [@`r params$referencias`].
+
+- **Citação narrativa**: @`r params$referencias`.
+
+
+## Referências
+
+### Formato
+
+```{r}
+library(htmltools)
+if (params$norma == "apa7.csl") {
+    p("Autor, A. A. (Ano). Título do artigo. Título do artigo. ", em("Nome do periódico, "), em("volume", .noWS="outside"),"(número), página inicial–página final. https://doi.org/xxxxx.")
+} else if (params$norma == "associacao-brasileira-de-normas-tecnicas.csl") {
+    p("AUTOR, Nome. Título do artigo. ", strong("Nome do periódico, "), "Local de Publicação, volume, número, página inicial-página final, mês e ano de publicação.")
+}
+```
+
+### Exemplo
