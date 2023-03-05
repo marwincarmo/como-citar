@@ -16,6 +16,105 @@ lang: pt
 knitr::opts_chunk$set(echo = FALSE, eval=TRUE, message=FALSE, warning=FALSE)
 ```
 
+
+```{r library}
+library(htmltools)
+```
+
+```{r apa7}
+# APA7 formato ------------------------------------------------------------
+
+
+# Artigo de periódico
+apa7norms <- if (params$referencias %in% c("CitekeyArticle", "CitekeyArticle2", "CitekeyArticle3", "CitekeyArticle4")) {
+    p("Autor, A. A. (ano). Título do artigo.", em("Título do periódico, "), em("volume", .noWS="outside"),"(número), páginas inicial–final do artigo. https://doi.org/xxxx")
+    # 21+ Autores
+} else if (params$referencias == "CitekeyArticle21") {
+    p("Autor, A. A., Autor, B. B., Autor, C. C., Autor, D. D., Autor, E. E., Autor, F. F., Autor, G. G., Autor, H. H., Autor, I. I., Autor, J. J., Autor, K. K., Autor, L. L., Autor, M. M., Autor, N. N., Autor, O. O., Autor, P. P., Autor, Q. Q., Autor, R. R., Autor, S. S., … Autor, V. V. (ano). Título do artigo", em("Título do periódico, "), em("volume", .noWS="outside"),"(número), páginas inicial–final do artigo. https://doi.org/xxxx") 
+    # Autor institucional
+} else if (params$referencias == "CitekeyGroupBook") {
+    p("Nome do grupo. (ano).", em("Título do livro"), "(N.ª ed, Vol. M) [se houver].", "Nome da editora.")
+    # Livro
+} else if (params$referencias == "CitekeyBook") {
+    p("Autor, A. A. (ano).", em("Título do livro"), "(N.ª ed., Vol. M) [se houver].", "Nome da editora.", "https://doi.org/xxxx [se houver]")
+    # Capítulo de livro
+} else if (params$referencias == "CitekeyInbook") {
+    p("Autor, A. A. (ano).", "Título do capítulo.", "Em E. E. Editor & F. F. Editor (Eds.),", em("Título do livro"), "(N.ª ed, Vol. M [se houver], pp. inicial--final).", "Nome da editora.")
+    # Trabalho apresentado em congresso
+} else if (params$referencias == "CitekeyInproceedings") {
+    p("Apresentador, A. A., & Apresentador, B. B. (Ano, Mês dia inicial--dia final).", em("Título da contribuição"), "[Tipo da contribuição].", "Nome do congresso, Localização.", "DOI (https://doi.org/xxxx) ou URL (https://xxxx)")
+    # Dissertação de mestrado
+} else if (params$referencias == "CitekeyMastersthesis") {
+    p("Autor, A. A. (ano).", em("Título da dissertação"), "[Dissertação de mestrado, Nome da Instituição]", "Repositório. https://xxxx")
+    # Tese de doutorado
+} else if (params$referencias == "amaral15") {
+    p("Autor, A. A. (ano).", em("Título da tese"), "[Tese de doutorado, Nome da Instituição]", "Repositório. https://xxxx")
+    # Livro publicado por editores
+} else if (params$referencias == "CitekeyProceedings") {
+    p("Editor, E. E., & Editor, F. F. (Eds.). (ano).", em("Título do livro"), "(N.ª ed., Vol. M) [se houver].", "Nome da editora", "https://doi.org/xxxxx [se houver]")
+    # Trabalho não publicado
+} else if (params$referencias == "CitekeyUnpublished") {
+    p("Autor, A. A. & Autor, B. B. (ano).", em("Título do trabalho"), "[Manuscrito não publicado/ Manuscrito em preparação/ Manuscrito submetido para publicação].", "Fonte do trabalho (e.g., Nome do departamento, Nome da universidade.", "https://xxxx [se houver]")
+    # Blog, revista ou jornal online
+} else if (params$referencias == "blogpost") {
+    p("Autor, A. A. & Autor, B. B.", strong("ou"), "Nome do Grupo/Instituição.", "(ano, mês dia [se houver]).", em("Título do trabalho."), "Nome do site.", "Recuperado em Mês dia, ano [apenas se o conteúdo não for uma página estática ou arquivada], de https://xxxxx")
+    # Testes, escalas e inventários
+} else if (params$referencias == "testes") {
+    p("Autor, A. A. & Autor, B. B.", "(ano).", em("Título do teste."), "https://xxxxx")
+}
+
+
+# APA7 exemplos ----------------------------------------------------------
+
+apa7ex <- if (params$referencias == "CitekeyArticle") {
+    p("Borsboom, D. (2006). The Attack of the Psychometricians.", em("Psychometrika, "), em("71", .noWS="outside"),"(3), 425–440. https://doi.org/10.1007/s11336-006-1447-6")
+    # 2 Autores
+} else if (params$referencias == "CitekeyArticle2") {
+    p("Kashdan, T. B., & Rottenberg, J. (2010). Psychological flexibility as a fundamental aspect of health.", em("Psychology Review, "), em("30", .noWS="outside"),"(7), 865–878. https://doi.org/10.1016/j.cpr.2010.03.001")
+    # 3 autores
+} else if  (params$referencias == "CitekeyArticle3") {
+    p("Wijsen, L. D., Borsboom, D., & Alexandrova, A. (2022). Values in Psychometrics.", em("Perspectives on Psychological Science, "), em("17", .noWS="outside"),"(3), 788–804. https://doi.org/10.1177/17456916211014183")
+    # 4+ autores
+} else if (params$referencias == "CitekeyArticle4") {
+    p("Blanken, T. F., Borsboom, D., Penninx, B. W., & Van Someren, E. J. (2020). Network Outcome Analysis Identifies Difficulty Initiating Sleep as a Primary Target for Prevention of Depression: A 6-Year Prospective Study.", em("Sleep, "), em("45", .noWS="outside"),"(5), 1–6. https://doi.org/10.1093/sleep/zsz288")
+    # 21+ autores
+} else if (params$referencias == "CitekeyArticle21") {
+    p("Page, M. J., McKenzie, J. E., Bossuyt, P. M., Boutron, I., Hoffmann, T. C., Mulrow, C. D., Shamseer, L., Tetzlaff, J. M., Akl, E. A., Brennan, S. E., Chou, R., Glanville, J., Grimshaw, J. M., Hróbjartsson, A., Lalu, M. M., Li, T., Loder, E. W., Mayo-Wilson, E., McDonald, S., … Moher, D. (2021). The PRISMA 2020 Statement: An Updated Guideline for Reporting Systematic Reviews.", em("BMJ, "), em("372."),"https://doi.org/10.1136/bmj.n71")
+    # Livro
+    # Autor institucional
+} else if (params$referencias == "CitekeyGroupBook") {
+    p("American Psychiatric Association. (2014).", em("Manual Diagnóstico e Estatístico de Transtornos Mentais"), "5.ª ed).", "Artmed.")
+    # Livro
+} else if (params$referencias == "CitekeyBook") {
+    p("Susskind, L., & Hrabovsky, G. (2014).", em("Classical mechanics: the theoretical minimum"), "Penguin Random House.")
+    # Capítulo de livro
+} else if (params$referencias == "CitekeyInbook") {
+    p("Balsam, K. F., Martell, C. R., Jones, K. P., & Safren, S. A. (2019).", "Affirmative cognitive behavior therapy with sexual and gender minority people.", "Em G. Y. Iwamasa & P. A. Hays (Eds.),", em("Culturally responsive cognitive behavior therapy: Practice and supervision"), "(2.ª ed., pp. 7–13).", "American Psychological Association. https://doi.org/10.1037/0000119-012")
+    # Trabalho apresentado em congresso
+} else if (params$referencias == "CitekeyInproceedings") {
+    p("Pearson, J. (2018, Setembro 27–30).", em("Fat talk and its effects on state-based body image in women"), "[Apresentação de Pôster].", "Australian Psychological Society Congress, Sydney, NSW, Australia.", "http://bit.ly/2XGSThP")
+    # Dissertação de mestrado
+} else if (params$referencias == "CitekeyMastersthesis") {
+    p("Hutcheson, V. H. (2012).", em("Dealing with dual differences: Social coping strategies of gifted and lesbian, gay, bisexual, transgender, and queer adolescents"), "[Dissertação de mestrado, The College of William & Mary]", "William & Mary Digital Archive. https://digitalarchive.wm.edu/bitstream/handle/10288/16594/HutchesonVirginia2012.pdf")
+    # Tese de doutorado
+} else if (params$referencias == "amaral15") {
+    p("Amaral, L. L. (2015).", em("A alternância transitivo-intransitiva no português brasileiro"), "[Tese de doutorado, Universidade Federal de Minas Gerais], Repositório Institucional da Universidade Federal de Minas Gerais. http://hdl.handle.net/1843/MGSS-9VNMNV")
+    # Livro publicado por editores
+} else if (params$referencias == "CitekeyProceedings") {
+    p("Damásio, B. F., & Borsa, J. C. (Eds.). (2018).", em("Manual de desenvolvimento de instrumentos psicológicos."), "Vetor.")
+    # Trabalho não publicado
+} else if (params$referencias == "CitekeyUnpublished") {
+    p("Yoo, J., Miyamoto, Y., Rigotti, A., & Ryff, C. (2016).", em("Linking positive affect to blood lipids: A cultural perspective"), "[Manuscrito não publicado].", "Department of Psychology, University of Wisconsin–Madison.")
+    # Blog, revista ou jornal online
+} else if (params$referencias == "blogpost") {
+    p("Khan, I. (2020, Fevereiro 17)", em("Why Animal Crossing Is the Game for the Coronavirus Moment."), "The New York Times.", "https://www.nytimes.com/2020/04/07/arts/animal-crossing-covid-coronavirus-popularity-millennials.html")
+    # Testes, escalas e inventários
+} else if (params$referencias == "testes") {
+    p("Project Implicit. (n.d.).", em("Gender–Science IAT."), "https://implicit.harvard.edu/implicit/takeatest.html")
+}
+```
+
+
 A norma escolhida foi `r params$norma`.  
 A referência escolhida foi `r params$referencias`
 
@@ -28,13 +127,26 @@ A referência escolhida foi `r params$referencias`
 
 ### Formato
 
-```{r}
-library(htmltools)
+
+```{r format}
+
+
 if (params$norma == "apa7.csl") {
-    p("Autor, A. A. (Ano). Título do artigo. Título do artigo. ", em("Nome do periódico, "), em("volume", .noWS="outside"),"(número), página inicial–página final. https://doi.org/xxxxx.")
-} else if (params$norma == "associacao-brasileira-de-normas-tecnicas.csl") {
-    p("AUTOR, Nome. Título do artigo. ", strong("Nome do periódico, "), "Local de Publicação, volume, número, página inicial-página final, mês e ano de publicação.")
+    apa7norms
+
 }
+
 ```
 
 ### Exemplo
+
+```{r examples}
+
+if (params$norma == "apa7.csl") {
+    apa7ex
+
+}
+
+```
+
+## Ref
