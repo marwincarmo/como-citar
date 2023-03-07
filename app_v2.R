@@ -48,8 +48,8 @@ ui <- fluidPage(
         
         # Posicione o menu de referências acima e centralizado
         fluidRow(column(4, offset = 4,
-                        selectInput("referencias_menu", "Referências:", referencias_opcoes, width = "100%"),
-                        selectInput("normas_menu", "Normas:", normas_opcoes, width = "100%")
+                        selectInput("normas_menu", "Normas:", normas_opcoes, width = "100%"),
+                        selectInput("referencias_menu", "Referências:", referencias_opcoes, width = "100%")
         )),
         
         # Posicione o texto abaixo e centralizado

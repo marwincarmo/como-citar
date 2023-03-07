@@ -24,7 +24,6 @@ library(htmltools)
 ```{r apa7}
 # APA7 formato ------------------------------------------------------------
 
-
 # Artigo de periódico
 apa7norms <- if (params$referencias %in% c("CitekeyArticle", "CitekeyArticle2", "CitekeyArticle3", "CitekeyArticle4")) {
     p("Autor, A. A. (ano). Título do artigo.", em("Título do periódico, "), em("volume", .noWS="outside"),"(número), páginas inicial–final do artigo. https://doi.org/xxxx")
@@ -114,6 +113,102 @@ apa7ex <- if (params$referencias == "CitekeyArticle") {
 }
 ```
 
+```{r abnt}
+# ABNT formato ------------------------------------------------------------
+
+# Artigo de periódico
+abntnorms <- if (params$referencias %in% c("CitekeyArticle", "CitekeyArticle2", "CitekeyArticle3")) {
+    p("AUTOR, A. A.  Título do artigo. ", strong("Título do periódico", .noWS="outside"), ", Local de publicação (cidade), v. X, n. Y, p. páginas inicial–final do artigo, data.")
+    # 4+ Autores
+} else if (params$referencias %in% c("CitekeyArticle4", "CitekeyArticle21")) {
+    p("AUTOR, A. A.", em("et al."), "Título do artigo.", strong("Título do periódico", .noWS="outside"), ", Local de publicação (cidade), v. X, n. Y, p. páginas inicial–final do artigo, data.") 
+    # Autor institucional
+} else if (params$referencias == "CitekeyGroupBook") {
+    p("NOME DO GRUPO.", strong("Título do livro", .noWS="outside"), ". N. ed.", "Cidade: Nome da editora, ano. ISBN XX-XXXX-XXX-X [elemento complementar].")
+    # Livro
+} else if (params$referencias == "CitekeyBook") {
+    p("AUTOR, A. A.", strong("Título do livro", .noWS="outside"), ". N. ed.", "Cidade: Nome da editora, ano. ISBN XX-XXXX-XXX-X [elemento complementar].")
+    # Capítulo de livro
+} else if (params$referencias == "CitekeyInbook") {
+    p("AUTOR, A. A. Título do capítulo. ", em("In", .noWS="outside"), ":", "EDITOR, E. E. (ed./coord./org.) " , strong("Título do livro", .noWS="outside"), ". N. ed.", "Cidade: Nome da editora, ano. p. páginas inicial–final do capítulo. ISBN XX-XXXX-XXX-X [elemento complementar].")
+    # Trabalho apresentado em congresso
+} else if (params$referencias == "CitekeyInproceedings") {
+    p("AUTOR, A. A.; AUTOR, B. B. Título do trabalho. ", em("In", .noWS="outside"), " NOME DO EVENTO. numeração do evento [se houver]. ano, local (cidade) de realização. ", strong("Título do documento", .noWS="outside"), ". Local de publicação (cidade): Editora, ano. p. páginas inicial–final do artigo. Informação de disponibilidade em meio eletrônico. [se houver]")
+    # Dissertação de mestrado
+} else if (params$referencias == "CitekeyMastersthesis") {
+    p("AUTOR, A. A.", strong("Título do trabalho", .noWS="outside"), ": subtítulo.", "Ano da defesa.", "Tipo de documento (Grau e Área) – Vinculação acadêmica, Cidade, Ano da defesa.")
+    # Tese de doutorado
+} else if (params$referencias == "amaral15") {
+    p("AUTOR, A. A.", strong("Título do trabalho", .noWS="outside"), ": subtítulo.", "Ano da defesa.", "Tipo de documento (Grau e Área) – Vinculação acadêmica, Cidade, Ano da defesa.")
+    # Livro publicado por editores
+} else if (params$referencias == "CitekeyProceedings") {
+    p("Editor, E. E.; Editor, F. F. (ed./coord./org.).", strong("Título do livro", .noWS="outside"), ". N. ed.", "Cidade: Nome da editora, ano.")
+    # Trabalho não publicado
+} else if (params$referencias == "CitekeyUnpublished") {
+    p(h4("Não publicados ou em preparação:"), 
+      "AUTOR, A. A.; AUTOR, B. B.; AUTOR, C. C. ", strong("Título do trabalho", .noWS="outside"), ". Fase em que o documento se encontra (No prelo/ Em fase de elaboração/ Não publicado/ Em fase de pré-publicação/ Submetido à publicação).",
+      h4("Aceitos para publicação:"),
+      "AUTOR, A. A.; AUTOR, B. B.; AUTOR, C. C. Título do trabalho. ", strong("Título do periódico", .noWS="outside"), ", Local de publicação (cidade), n. X, data. No prelo."
+      )
+    # Blog, revista ou jornal online
+} else if (params$referencias == "blogpost") {
+    p("AUTOR, A. A. Título do artigo. ", strong("Título do jornal/página", .noWS="outside"), ", Local de publicação (cidade), numeração do ano e/ou volume,  número [se houver], data de publicação, seção, caderno ou parte do jornal e a paginação correspondente [se houver]. Disponível em: http://xxxxx. Acesso em: Dia mês. Ano.", p("Quando não houver seção, caderno ou parte, a paginação do artigo ou matéria precede a data."))
+    # Testes, escalas e inventários
+} else if (params$referencias == "testes") {
+    p("AUTOR, A. A.; Autor, B. B.", strong("Título do teste."), "https://xxxxx")
+}
+
+
+# ABNT exemplos ----------------------------------------------------------
+
+abntex <- if (params$referencias == "CitekeyArticle") {
+    p("BORSBOOM, D. The Attack of the Psychometricians. ", strong("Psychometrika", .noWS="outside"), ", [", em("S. l.", .noWS="outside"), "], v. 71, n. 3, p. 425–440, set. 2006.",
+      p("Obs: Utilize a expressão sine loco, abreviada, entre colchetes [", em("s. l.", .noWS="outside"), "], caso não seja possível identificar o local de publicação."))
+    # 2 Autores
+} else if (params$referencias == "CitekeyArticle2") {
+    p("KASHDAN, T. B.; ROTTENBERG, J. Psychological flexibility as a fundamental aspect of health. ", strong("Clinical Psychology Review", .noWS="outside"), ", [", em("S. l.", .noWS="outside"), "],  v. 30, n. 7, p. 865–878, 2010.")
+    # 3 autores
+} else if  (params$referencias == "CitekeyArticle3") {
+    p("KASHDAN, T. B.; ROTTENBERG, J. Psychological flexibility as a fundamental aspect of health. ", strong("Perspectives on Psychological Science", .noWS="outside"), ", Washington, v. 30, n. 7, p. 865–878, 2010.")
+    # 4+ autores
+} else if (params$referencias == "CitekeyArticle4") {
+    p("BLANKEN, T. F.", em("et al."), "Network Outcome Analysis Identifies Difficulty Initiating Sleep as a Primary Target for Prevention of Depression: A 6-Year Prospective Study. ", strong("Sleep", .noWS="outside"),  ", Rochester, MN, v. 43, n. 5, p. 1–6, 2020.")
+    # 21+ autores
+} else if (params$referencias == "CitekeyArticle21") {
+    p("PAGE, M. J.", em("et al."), "The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. ", strong("BMJ", .noWS="outside"),  ", London, v. 372, 2021.")
+    # Autor institucional
+} else if (params$referencias == "CitekeyGroupBook") {
+    p("AMERICAN PSYCHIATRIC ASSOCIATION.", strong("Manual Diagnóstico e Estatístico de Transtornos Mentais", .noWS="outside"), ". 5. ed. Porto Alegre: Artmed, 2014.")
+    # Livro
+} else if (params$referencias == "CitekeyBook") {
+    p("Susskind, L., & Hrabovsky, G. (2014).", strong("Classical mechanics: the theoretical minimum", .noWS="outside"), ". New York, NY: Penguin Random House, 2014")
+    # Capítulo de livro
+} else if (params$referencias == "CitekeyInbook") {
+    p("BALSAM, K. F. et al. Affirmative cognitive behavior therapy with sexual and gender minority people. ", em("In", .noWS="outside"), ":", "IWAMASA, G. Y.; HAYS, P. A. (ed.) " , strong("Culturally responsive cognitive behavior therapy: Practice and supervision", .noWS="outside"), ". 2. ed.", "Washington, DC: American Psychological Association, 2006. p. 7–13. ISBN 1433830167.")
+    # Trabalho apresentado em congresso
+} else if (params$referencias == "CitekeyInproceedings") {
+    p("Pearson, J. (2018, Setembro 27–30).", em("Fat talk and its effects on state-based body image in women"), "[Apresentação de Pôster].", "Australian Psychological Society Congress, Sydney, NSW, Australia.", "http://bit.ly/2XGSThP")
+    # Dissertação de mestrado
+} else if (params$referencias == "CitekeyMastersthesis") {
+    p("Hutcheson, V. H. (2012).", em("Dealing with dual differences: Social coping strategies of gifted and lesbian, gay, bisexual, transgender, and queer adolescents"), "[Dissertação de mestrado, The College of William & Mary]", "William & Mary Digital Archive. https://digitalarchive.wm.edu/bitstream/handle/10288/16594/HutchesonVirginia2012.pdf")
+    # Tese de doutorado
+} else if (params$referencias == "amaral15") {
+    p("Amaral, L. L. (2015).", em("A alternância transitivo-intransitiva no português brasileiro"), "[Tese de doutorado, Universidade Federal de Minas Gerais], Repositório Institucional da Universidade Federal de Minas Gerais. http://hdl.handle.net/1843/MGSS-9VNMNV")
+    # Livro publicado por editores
+} else if (params$referencias == "CitekeyProceedings") {
+    p("DAMÁSIO, B. F.; BORSA, J. C. (ed.).", strong("Manual de desenvolvimento de instrumentos psicológicos", .noWS="outside"), ". São Paulo: Vetor, 2018.")
+    # Trabalho não publicado
+} else if (params$referencias == "CitekeyUnpublished") {
+    p("YOO, J.", em("et al."), strong("Linking positive affect to blood lipids", .noWS="outside"), ": A cultural perspective.", ". 2016. Não publicado.")
+    # Blog, revista ou jornal online
+} else if (params$referencias == "blogpost") {
+    p("KHAN, I. Why Animal Crossing Is the Game for the Coronavirus Moment. ", strong("The New York Times", .noWS="outside"), ". Disponível em: https://www.nytimes.com/2020/04/07/arts/animal-crossing-covid-coronavirus-popularity-millennials.html. Acesso em: 07 mar. 2022.")
+    # Testes, escalas e inventários
+} else if (params$referencias == "testes") {
+    p("Project Implicit. (n.d.).", em("Gender–Science IAT."), "https://implicit.harvard.edu/implicit/takeatest.html")
+}
+```
+
 
 A norma escolhida foi `r params$norma`.  
 A referência escolhida foi `r params$referencias`
@@ -133,7 +228,8 @@ A referência escolhida foi `r params$referencias`
 
 if (params$norma == "apa7.csl") {
     apa7norms
-
+} else if (params$norma == "associacao-brasileira-de-normas-tecnicas.csl"){
+    abntnorms
 }
 
 ```
@@ -144,7 +240,8 @@ if (params$norma == "apa7.csl") {
 
 if (params$norma == "apa7.csl") {
     apa7ex
-
+} else if (params$norma == "associacao-brasileira-de-normas-tecnicas.csl"){
+    abntex
 }
 
 ```
