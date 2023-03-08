@@ -1,0 +1,14 @@
+name: comocitar
+title:
+username:
+account: psicometriaonline
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 8262181
+bundleId: 6928166
+url: https://psicometriaonline.shinyapps.io/comocitar/
+when: 1678232561.38032
+lastSyncTime: 1678232561.38035
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: app_old.R|app_v0.R|testes.html|testes.log|testes.Rmd|testes.tex

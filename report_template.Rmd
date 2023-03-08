@@ -209,6 +209,215 @@ abntex <- if (params$referencias == "CitekeyArticle") {
 }
 ```
 
+```{r vancouver}
+# Vancouver formato ------------------------------------------------------------
+
+# Artigo de periódico
+vancouvernorms <- if (params$referencias %in% c("CitekeyArticle", "CitekeyArticle2", "CitekeyArticle3", "CitekeyArticle4")) {
+    p("Autor AA. Título do artigo.", em("Título do periódico abreviado.") ,"ano; volume(número):páginas inicial–final do artigo. doi:10.xxxxxx.")
+} else if (params$referencias == "CitekeyArticle2") {
+    p("Autor AA, Autor BB. Título do artigo.", em("Título do periódico abreviado.") ,"ano; volume(número):páginas inicial–final do artigo. doi:10.xxxxxx.")
+} else if (params$referencias == "CitekeyArticle3") {
+    p("Autor AA, Autor BB, Autor CC., Título do artigo.", em("Título do periódico abreviado.") ,"ano; volume(número):páginas inicial–final do artigo. doi:10.xxxxxx.")
+} else if (params$referencias == "CitekeyArticle4") {
+    p("Autor AA, Autor BB, Autor CC, Autor DD. Título do artigo.", em("Título do periódico abreviado.") ,"ano; volume(número):páginas inicial–final do artigo. doi:10.xxxxxx.")
+} else if (params$referencias == "CitekeyArticle7") {
+    p("Autor AA, Autor BB, Autor CC, et al. Título do artigo.", em("Título do periódico abreviado.") ,"ano; volume(número):páginas inicial–final do artigo. doi:10.xxxxxx.")
+    # 21+ Autores
+} else if (params$referencias == "CitekeyArticle21") {
+    p("Autor AA, Autor BB, Autor CC, et al. Título do artigo.", em("Título do periódico abreviado.") ,"ano; volume(número):páginas inicial–final do artigo. doi:10.xxxxxx.") 
+    # Autor institucional
+} else if (params$referencias == "CitekeyGroupBook") {
+    p("Nome do grupo. ", em("Título do livro: subtítulo.") ,"Nnd/th ed. [não indicar 1ª edição] Editora; ano. Accessed Mês DD, YYYY. URL [se houver]") 
+    # Livro
+} else if (params$referencias == "CitekeyBook") {
+    p("Autor AA, Autor BB. ", em("Título do livro: subtítulo.") ,"Nnd/th ed. [não indicar 1ª edição] Editora; ano. Acessado Mês DD, YYYY. URL [para e-books online]") 
+    # Capítulo de livro
+} else if (params$referencias == "CitekeyInbook") {
+    p("Autor AA, Autor BB. Título do capítulo. In Editor EE, Editor FF, Editor GG, eds.", em("Título do livro: subtítulo.") ,"Nnd ed. [não indicar 1ª edição] Editora; ano:páginas inicial–final.")
+    # Trabalho apresentado em congresso
+} else if (params$referencias == "CitekeyInproceedings") {
+    p("Autor AA, Autor BB. Título do trabalho. Tipo de apresentação presented at: Nome do congresso; Mês dia inicial–final, Ano; Cidade, Sigla do Estado. Acessado Mês DD, YYYY. URL [para trabalhos online]")
+    # Dissertação de mestrado
+} else if (params$referencias == "CitekeyMastersthesis") {
+    p("Autor AA. ", em("Título da dissertação: subtítulo.") ,"Master’s thesis. Nome da Universidade; Ano. Accessed Mês DD, YYYY. URL [para dissertações online]") 
+    # Tese de doutorado
+} else if (params$referencias == "amaral15") {
+    p("Autor AA. ", em("Título da tese: subtítulo.") ,"Dissertation. Nome da Universidade; Ano. Accessed Mês DD, YYYY. URL [para dissertações online]")
+    # Livro publicado por editores
+} else if (params$referencias == "CitekeyProceedings") {
+    p("Editor EE, Editor FF, eds. ", em("Título do livro: subtítulo.") ,"Nnd/th ed. [apenas edição maior do que a 1ª] Editora; ano. Acessado Mês DD, YYYY. URL [para e-books online]")
+    # Trabalho não publicado
+} else if (params$referencias == "CitekeyUnpublished") {
+    p(h4("Aceito para publicação mas não publicado:"), 
+      "Artigos das revistas JAMA Network não incluem estes materiais como referências formais, em especial artigos de periódicos que ainda não foram publicados. Para livros, pode ser utilizada o seguinte modelo:",
+      p("Autor AA. ", em("Título do livro: subtítulo.") ,"Editora. Forthcoming Ano."),
+      h4("Material submetido para publicação mas ainda não aceito:"),
+      "Não devem ser incluídos na lista de referências. Deve ser mencionada no texto como unpublished data:",
+      br(),
+      "These findings have recently been corroborated (H. E. Marman, MD, unpublished data, January 2015)."
+      )
+    # Blog, revista ou jornal online
+} else if (params$referencias == "blogpost") {
+    p("Autor AA. Título do item citado ou nome da organização caso não haja um título. Nome do website. Mês DD, YYYY. Updated Mês DD, YYYY. Accessed Mês DD, YYYY. http://xxxxx")
+    # Testes, escalas e inventários
+} else if (params$referencias == "testes") {
+    p("Autor, A. A. & Autor, B. B.", "(ano).", em("Título do teste."), "https://xxxxx")
+}
+
+
+# Vancouver exemplos ----------------------------------------------------------
+
+vancouverex <- if (params$referencias == "CitekeyArticle") {
+    p("(1) Borsboom D. The Attack of the Psychometricians.", em("Psychometrika.") ,"2006; 71(3):425–440. doi:10.1007/s11336-006-1447-6")
+} else if (params$referencias == "CitekeyArticle2") {
+    p("(1) Kashdan TB, Rottenberg J. Psychological flexibility as a fundamental aspect of health.", em("Clinical Psychology Review.") ,"2010;30(7):865–878. doi:10.1016/j.cpr.2010.03.001")
+} else if (params$referencias == "CitekeyArticle3") {
+    p("(1) Wijsen LD, Borsboom D, Alexandrova A. Values in Psychometrics.", em("Perspectives on Psychological Science.") ,"2022;17(3):788–804. doi:10.1177/17456916211014183")
+} else if (params$referencias == "CitekeyArticle4") {
+    p("(1) Blanken TF, Borsboom D, Penninx BW, van Someren EJ. Network Outcome Analysis Identifies Difficulty Initiating Sleep as a Primary Target for Prevention of Depression: A 6-Year Prospective Study.", em("Sleep.") ,"2020;43(5):1–6. doi:10.1093/sleep/zsz288")
+} else if (params$referencias == "CitekeyArticle7") {
+    p("(1) Baglioni C, Battagliese G, Feige B, Spiegelhalder K, Nissen C, Voderholzer U, et al. Insomnia as a Predictor of Depression: A Meta-Analytic Evaluation of Longitudinal Epidemiological Studies.", em("Journal of Affective Disorders.") ,"2011;135(1):10–9. doi:10.1016/j.jad.2011.01.011")
+    # 21+ Autores
+} else if (params$referencias == "CitekeyArticle21") {
+    p("(1) Page MJ, McKenzie JE, Bossuyt PM, et al. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews.", em("BMJ.") ,"2021;372:n71. doi:10.1136/bmj.n71") 
+    # Autor institucional
+} else if (params$referencias == "CitekeyGroupBook") {
+    p("(1) American Psychiatric Association. ", em("Manual Diagnóstico e Estatístico de Transtornos Mentais.") ,"5th ed. Artmed; 2014.") 
+    # Livro
+} else if (params$referencias == "CitekeyBook") {
+    p("(1) Susskind L, Hrabovsky G. ", em("Classical mechanics: the theoretical minimum.") ,"Penguin Random House; 2014.") 
+    # Capítulo de livro
+} else if (params$referencias == "CitekeyInbook") {
+    p("(1) Balsam, KF, Martell CR, Jones KP, Safren SA. Affirmative cognitive behavior therapy with sexual and gender minority people. In Iwamasa GY, Hays PA, eds.", em("Culturally responsive cognitive behavior therapy: Practice and supervision.") ,"2nd ed. American Psychological Association; 2019:7–13.")
+    # Trabalho apresentado em congresso
+} else if (params$referencias == "CitekeyInproceedings") {
+    p("(1) Pearson J. Fat talk and its effects on state-based body image in women. Poster presented at: Australian Psychological Society Congress; September 27–30, 2018; Sidney, NSW. Acessed March 07, 2022. http://bit.ly/2XGSThP")
+    # Dissertação de mestrado
+} else if (params$referencias == "CitekeyMastersthesis") {
+    p("(1) Hutcheson, VH. ", em("Dealing with dual differences: Social coping strategies of gifted and lesbian, gay, bisexual, transgender, and queer adolescents.") ,"Master’s thesis. The College of William & Mary; 2012. Acessed March 07, 2022. https://digitalarchive.wm.edu/bitstream/handle/10288/16594/HutchesonVirginia2012.pdf") 
+    # Tese de doutorado
+} else if (params$referencias == "amaral15") {
+    p("(1) Amaral LL. ", em("A alternância transitivo-intransitiva no português brasileiro.") ,"Dissertation. Universidade Federal de Minas Gerais; 2015. Acessed March 07, 2022. http://hdl.handle.net/1843/MGSS-9VNMNV")
+    # Livro publicado por editores
+} else if (params$referencias == "CitekeyProceedings") {
+    p("(1) Damásio BF, Borsa JC, eds.", em("Manual de desenvolvimento de instrumentos psicológicos.") ,"Vetor; 2018.")
+    # Trabalho não publicado
+} else if (params$referencias == "CitekeyUnpublished") {
+    p("(1) Christiansen SL, Iverson C, Flanagin A, et al.", em("AMA Manual of Style: A Guide for Authors and Editors.") ,"11th ed. Oxford University Press. Forthcoming 2019.")
+    # Blog, revista ou jornal online
+} else if (params$referencias == "blogpost") {
+    p("(1) Khan I. Why Animal Crossing Is the Game for the Coronavirus Moment. The New York Times. 2020. February 17, 2020. Accessed March 07, 2022. https://www.nytimes.com/2020/04/07/arts/animal-crossing-covid-coronavirus-popularity-millennials.html")
+    # Testes, escalas e inventários
+} else if (params$referencias == "testes") {
+    p("Autor, A. A. & Autor, B. B.", "(ano).", em("Título do teste."), "https://xxxxx")
+}
+```
+
+```{r vancouver}
+# Chicago formato ------------------------------------------------------------
+
+# Artigo de periódico
+chicagonorms <- if (params$referencias %in% c("CitekeyArticle", "CitekeyArticle2", "CitekeyArticle3", "CitekeyArticle4")) {
+    p("Autor AA. Título do artigo.", em("Título do periódico abreviado.") ,"ano; volume(número):páginas inicial–final do artigo. doi:10.xxxxxx.")
+} else if (params$referencias == "CitekeyArticle2") {
+    p("Autor AA, Autor BB. Título do artigo.", em("Título do periódico abreviado.") ,"ano; volume(número):páginas inicial–final do artigo. doi:10.xxxxxx.")
+} else if (params$referencias == "CitekeyArticle3") {
+    p("Autor AA, Autor BB, Autor CC., Título do artigo.", em("Título do periódico abreviado.") ,"ano; volume(número):páginas inicial–final do artigo. doi:10.xxxxxx.")
+} else if (params$referencias == "CitekeyArticle4") {
+    p("Autor AA, Autor BB, Autor CC, Autor DD. Título do artigo.", em("Título do periódico abreviado.") ,"ano; volume(número):páginas inicial–final do artigo. doi:10.xxxxxx.")
+} else if (params$referencias == "CitekeyArticle7") {
+    p("Autor AA, Autor BB, Autor CC, et al. Título do artigo.", em("Título do periódico abreviado.") ,"ano; volume(número):páginas inicial–final do artigo. doi:10.xxxxxx.")
+    # 21+ Autores
+} else if (params$referencias == "CitekeyArticle21") {
+    p("Autor AA, Autor BB, Autor CC, et al. Título do artigo.", em("Título do periódico abreviado.") ,"ano; volume(número):páginas inicial–final do artigo. doi:10.xxxxxx.") 
+    # Autor institucional
+} else if (params$referencias == "CitekeyGroupBook") {
+    p("Nome do grupo. ", em("Título do livro: subtítulo.") ,"Nnd/th ed. [não indicar 1ª edição] Editora; ano. Accessed Mês DD, YYYY. URL [se houver]") 
+    # Livro
+} else if (params$referencias == "CitekeyBook") {
+    p("Autor AA, Autor BB. ", em("Título do livro: subtítulo.") ,"Nnd/th ed. [não indicar 1ª edição] Editora; ano. Acessado Mês DD, YYYY. URL [para e-books online]") 
+    # Capítulo de livro
+} else if (params$referencias == "CitekeyInbook") {
+    p("Autor AA, Autor BB. Título do capítulo. In Editor EE, Editor FF, Editor GG, eds.", em("Título do livro: subtítulo.") ,"Nnd ed. [não indicar 1ª edição] Editora; ano:páginas inicial–final.")
+    # Trabalho apresentado em congresso
+} else if (params$referencias == "CitekeyInproceedings") {
+    p("Autor AA, Autor BB. Título do trabalho. Tipo de apresentação presented at: Nome do congresso; Mês dia inicial–final, Ano; Cidade, Sigla do Estado. Acessado Mês DD, YYYY. URL [para trabalhos online]")
+    # Dissertação de mestrado
+} else if (params$referencias == "CitekeyMastersthesis") {
+    p("Autor AA. ", em("Título da dissertação: subtítulo.") ,"Master’s thesis. Nome da Universidade; Ano. Accessed Mês DD, YYYY. URL [para dissertações online]") 
+    # Tese de doutorado
+} else if (params$referencias == "amaral15") {
+    p("Autor AA. ", em("Título da tese: subtítulo.") ,"Dissertation. Nome da Universidade; Ano. Accessed Mês DD, YYYY. URL [para dissertações online]")
+    # Livro publicado por editores
+} else if (params$referencias == "CitekeyProceedings") {
+    p("Editor EE, Editor FF, eds. ", em("Título do livro: subtítulo.") ,"Nnd/th ed. [apenas edição maior do que a 1ª] Editora; ano. Acessado Mês DD, YYYY. URL [para e-books online]")
+    # Trabalho não publicado
+} else if (params$referencias == "CitekeyUnpublished") {
+    p(h4("Aceito para publicação mas não publicado:"), 
+      "Artigos das revistas JAMA Network não incluem estes materiais como referências formais, em especial artigos de periódicos que ainda não foram publicados. Para livros, pode ser utilizada o seguinte modelo:",
+      p("Autor AA. ", em("Título do livro: subtítulo.") ,"Editora. Forthcoming Ano."),
+      h4("Material submetido para publicação mas ainda não aceito:"),
+      "Não devem ser incluídos na lista de referências. Deve ser mencionada no texto como unpublished data:",
+      br(),
+      "These findings have recently been corroborated (H. E. Marman, MD, unpublished data, January 2015)."
+      )
+    # Blog, revista ou jornal online
+} else if (params$referencias == "blogpost") {
+    p("Autor AA. Título do item citado ou nome da organização caso não haja um título. Nome do website. Mês DD, YYYY. Updated Mês DD, YYYY. Accessed Mês DD, YYYY. http://xxxxx")
+    # Testes, escalas e inventários
+} else if (params$referencias == "testes") {
+    p("Autor, A. A. & Autor, B. B.", "(ano).", em("Título do teste."), "https://xxxxx")
+}
+
+
+# Vancouver exemplos ----------------------------------------------------------
+
+chicagoex <- if (params$referencias == "CitekeyArticle") {
+    p("(1) Borsboom D. The Attack of the Psychometricians.", em("Psychometrika.") ,"2006; 71(3):425–440. doi:10.1007/s11336-006-1447-6")
+} else if (params$referencias == "CitekeyArticle2") {
+    p("(1) Kashdan TB, Rottenberg J. Psychological flexibility as a fundamental aspect of health.", em("Clinical Psychology Review.") ,"2010;30(7):865–878. doi:10.1016/j.cpr.2010.03.001")
+} else if (params$referencias == "CitekeyArticle3") {
+    p("(1) Wijsen LD, Borsboom D, Alexandrova A. Values in Psychometrics.", em("Perspectives on Psychological Science.") ,"2022;17(3):788–804. doi:10.1177/17456916211014183")
+} else if (params$referencias == "CitekeyArticle4") {
+    p("(1) Blanken TF, Borsboom D, Penninx BW, van Someren EJ. Network Outcome Analysis Identifies Difficulty Initiating Sleep as a Primary Target for Prevention of Depression: A 6-Year Prospective Study.", em("Sleep.") ,"2020;43(5):1–6. doi:10.1093/sleep/zsz288")
+} else if (params$referencias == "CitekeyArticle7") {
+    p("(1) Baglioni C, Battagliese G, Feige B, Spiegelhalder K, Nissen C, Voderholzer U, et al. Insomnia as a Predictor of Depression: A Meta-Analytic Evaluation of Longitudinal Epidemiological Studies.", em("Journal of Affective Disorders.") ,"2011;135(1):10–9. doi:10.1016/j.jad.2011.01.011")
+    # 21+ Autores
+} else if (params$referencias == "CitekeyArticle21") {
+    p("(1) Page MJ, McKenzie JE, Bossuyt PM, et al. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews.", em("BMJ.") ,"2021;372:n71. doi:10.1136/bmj.n71") 
+    # Autor institucional
+} else if (params$referencias == "CitekeyGroupBook") {
+    p("(1) American Psychiatric Association. ", em("Manual Diagnóstico e Estatístico de Transtornos Mentais.") ,"5th ed. Artmed; 2014.") 
+    # Livro
+} else if (params$referencias == "CitekeyBook") {
+    p("(1) Susskind L, Hrabovsky G. ", em("Classical mechanics: the theoretical minimum.") ,"Penguin Random House; 2014.") 
+    # Capítulo de livro
+} else if (params$referencias == "CitekeyInbook") {
+    p("(1) Balsam, KF, Martell CR, Jones KP, Safren SA. Affirmative cognitive behavior therapy with sexual and gender minority people. In Iwamasa GY, Hays PA, eds.", em("Culturally responsive cognitive behavior therapy: Practice and supervision.") ,"2nd ed. American Psychological Association; 2019:7–13.")
+    # Trabalho apresentado em congresso
+} else if (params$referencias == "CitekeyInproceedings") {
+    p("(1) Pearson J. Fat talk and its effects on state-based body image in women. Poster presented at: Australian Psychological Society Congress; September 27–30, 2018; Sidney, NSW. Acessed March 07, 2022. http://bit.ly/2XGSThP")
+    # Dissertação de mestrado
+} else if (params$referencias == "CitekeyMastersthesis") {
+    p("(1) Hutcheson, VH. ", em("Dealing with dual differences: Social coping strategies of gifted and lesbian, gay, bisexual, transgender, and queer adolescents.") ,"Master’s thesis. The College of William & Mary; 2012. Acessed March 07, 2022. https://digitalarchive.wm.edu/bitstream/handle/10288/16594/HutchesonVirginia2012.pdf") 
+    # Tese de doutorado
+} else if (params$referencias == "amaral15") {
+    p("(1) Amaral LL. ", em("A alternância transitivo-intransitiva no português brasileiro.") ,"Dissertation. Universidade Federal de Minas Gerais; 2015. Acessed March 07, 2022. http://hdl.handle.net/1843/MGSS-9VNMNV")
+    # Livro publicado por editores
+} else if (params$referencias == "CitekeyProceedings") {
+    p("(1) Damásio BF, Borsa JC, eds.", em("Manual de desenvolvimento de instrumentos psicológicos.") ,"Vetor; 2018.")
+    # Trabalho não publicado
+} else if (params$referencias == "CitekeyUnpublished") {
+    p("(1) Christiansen SL, Iverson C, Flanagin A, et al.", em("AMA Manual of Style: A Guide for Authors and Editors.") ,"11th ed. Oxford University Press. Forthcoming 2019.")
+    # Blog, revista ou jornal online
+} else if (params$referencias == "blogpost") {
+    p("(1) Khan I. Why Animal Crossing Is the Game for the Coronavirus Moment. The New York Times. 2020. February 17, 2020. Accessed March 07, 2022. https://www.nytimes.com/2020/04/07/arts/animal-crossing-covid-coronavirus-popularity-millennials.html")
+    # Testes, escalas e inventários
+} else if (params$referencias == "testes") {
+    p("Autor, A. A. & Autor, B. B.", "(ano).", em("Título do teste."), "https://xxxxx")
+}
+```
 
 A norma escolhida foi `r params$norma`.  
 A referência escolhida foi `r params$referencias`
@@ -228,8 +437,12 @@ A referência escolhida foi `r params$referencias`
 
 if (params$norma == "apa7.csl") {
     apa7norms
-} else if (params$norma == "associacao-brasileira-de-normas-tecnicas.csl"){
+} else if (params$norma == "planeta-zotero-abnt.csl"){
     abntnorms
+} else if (params$norma == "vancouver.csl") {
+    vancouvernorms
+} else {
+    chicagonorms
 }
 
 ```
@@ -240,8 +453,12 @@ if (params$norma == "apa7.csl") {
 
 if (params$norma == "apa7.csl") {
     apa7ex
-} else if (params$norma == "associacao-brasileira-de-normas-tecnicas.csl"){
+} else if (params$norma == "planeta-zotero-abnt.csl"){
     abntex
+} else if (params$norma == "vancouver.csl") {
+    vancouverex
+} else {
+    chicagoex
 }
 
 ```
