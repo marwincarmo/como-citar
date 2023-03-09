@@ -5,12 +5,12 @@ library(htmltools)
 
 # Defina as opções dos menus
 
-referencias_opcoes <- c("Artigo" = "CitekeyArticle",
+referencias_opcoes <- c("Artigo com um autor" = "CitekeyArticle",
                         #"Artigo no prelo" = "CitekeyArticleInPress",
                         "Artigo com dois autores" = "CitekeyArticle2",
-                        "Artigo três autores" = "CitekeyArticle3",
-                        "Artigo com quatro autores" = "CitekeyArticle4",
-                        "Artigo com sete ou mais autores" = "CitekeyArticle7",
+                        "Artigo com três autores" = "CitekeyArticle3",
+                        "Artigo com quatro a seis autores" = "CitekeyArticle4",
+                        "Artigo com sete a vinte autores" = "CitekeyArticle7",
                         "Artigo com 21 ou mais autores" = "CitekeyArticle21",
                         "Autor institucional (livro)" = "CitekeyGroupBook",
                         "Livro" = "CitekeyBook",
@@ -25,22 +25,23 @@ referencias_opcoes <- c("Artigo" = "CitekeyArticle",
                         #"Anais de congressos" = "CitekeyProceedings",
                         #"Relatório técnico" = "CitekeyTechreport",
                         "Trabalho não publicado" = "CitekeyUnpublished",
-                        "Webpages e Websites" = "blogpost",
+                        "Webpages e Websites" = "blogpost"
                         #"Artigo de revista" = "magazine",
                         #"Artigo de jornal" = "newspaper",
                         #"Dicionario" = "dictionary",
-                        "Testes, escalas e inventários sem manual" = "testes"
-                        )
+                        #"Testes, escalas e inventários sem manual" = "testes"
+)
 
 normas_opcoes <-  c(#"ABNT (NBR 6023)" = "associacao-brasileira-de-normas-tecnicas.csl", 
-                    "ABNT (NBR 6023)" = "planeta-zotero-abnt.csl",
-                    "APA (7th ed.)" = "apa7.csl", 
-                    "Vancouver (11th ed.)" = "vancouver.csl", 
-                    "Chicago (17th ed.)" = "chicago-author-date.csl",
-                    "Chicago PT" = "chicago-pt.csl")
+    "ABNT (NBR 6023)" = "planeta-zotero-abnt.csl",
+    "APA (7th ed.)" = "apa7.csl", 
+    "Vancouver (AMA 11th ed.) " = "vancouver.csl"
+    )
+
 
 # Cria a user interface  ----- 
 ui <- fluidPage(
+    includeCSS("www/custom.css"),
     
     # Use o theme do shinythemes para alterar a cor de fundo
     
@@ -49,8 +50,8 @@ ui <- fluidPage(
         
         # Posicione o menu de referências acima e centralizado
         fluidRow(column(4, offset = 4,
-                        selectInput("normas_menu", "Normas:", normas_opcoes, width = "100%"),
-                        selectInput("referencias_menu", "Referências:", referencias_opcoes, width = "100%")
+                        selectInput("referencias_menu", "Referências:", referencias_opcoes, width = "100%"),
+                        selectInput("normas_menu", "Normas:", normas_opcoes, width = "100%")
         )),
         
         # Posicione o texto abaixo e centralizado

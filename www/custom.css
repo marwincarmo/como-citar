@@ -1,0 +1,44 @@
+/* Get a fancy font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+body {
+  background-color: #0e1e2d;
+  color: white; /* text color */
+}
+
+/* Change header text to imported font */
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+}
+h3 {
+  font-family: 'Montserrat', sans-serif;
+}
+h4 {
+  font-family: 'Montserrat', sans-serif;
+}
+p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px
+}
+
+/* Make text visible on inputs */
+.shiny-input-container {
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    font-size:16px;
+}
+
+.line {
+  margin: 0px 0;
+  height: 8px;
+  background: repeating-linear-gradient(
+    to right,
+    transparent,
+    transparent 10px,
+    white 10px,
+    white 20px
+  );
+  /*10px transparent then 10px black -> repeat this!*/
+}
