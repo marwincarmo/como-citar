@@ -28,30 +28,30 @@ library(htmltools)
 # Artigo de periódico
 apa7norms <- if (params$referencias %in% c("CitekeyArticle")) {
     p("Autor, A. A. (ano). Título do artigo.", em("Título do periódico, "), em("volume", .noWS="outside"),"(número), páginas inicial–final do artigo. https://doi.org/xxxx")
-    # 21+ Autores
+    # 2 Autores
 } else if (params$referencias == "CitekeyArticle2") {
-    p("Autor, A. A., Autor, B. B. (ano). Título do artigo", em("Título do periódico, "), em("volume", .noWS="outside"),"(número), páginas inicial–final do artigo. https://doi.org/xxxx") 
-    # Autor institucional
+    p("Autor, A. A., & Autor, B. B. (ano). Título do artigo", em("Título do periódico, "), em("volume", .noWS="outside"),"(número), páginas inicial–final do artigo. https://doi.org/xxxx") 
+    # 3 autores
 } else if (params$referencias == "CitekeyArticle3") {
-    p("Autor, A. A., Autor, B. B., Autor, C. C. (ano). Título do artigo", em("Título do periódico, "), em("volume", .noWS="outside"),"(número), páginas inicial–final do artigo. https://doi.org/xxxx") 
-    # Autor institucional
+    p("Autor, A. A., Autor, B. B., & Autor, C. C. (ano). Título do artigo", em("Título do periódico, "), em("volume", .noWS="outside"),"(número), páginas inicial–final do artigo. https://doi.org/xxxx") 
+    # 4-6 autores
 } else if (params$referencias == "CitekeyArticle4") {
-    p("Autor, A. A., Autor, B. B., Autor, C. C., Autor, D. D. (ano). Título do artigo", em("Título do periódico, "), em("volume", .noWS="outside"),"(número), páginas inicial–final do artigo. https://doi.org/xxxx") 
-    # Autor institucional
+    p("Autor, A. A., Autor, B. B., Autor, C. C., & Autor, D. D. (ano). Título do artigo", em("Título do periódico, "), em("volume", .noWS="outside"),"(número), páginas inicial–final do artigo. https://doi.org/xxxx") 
+    # 7-20 autores
 } else if (params$referencias == "CitekeyArticle7") {
-    p("Autor, A. A., Autor, B. B., Autor, C. C., Autor, D. D., Autor, E. E., Autor, F. F., Autor, G. G. (ano). Título do artigo", em("Título do periódico, "), em("volume", .noWS="outside"),"(número), páginas inicial–final do artigo. https://doi.org/xxxx") 
-    # Autor institucional
+    p("Autor, A. A., Autor, B. B., Autor, C. C., Autor, D. D., Autor, E. E., Autor, F. F., & Autor, G. G. (ano). Título do artigo", em("Título do periódico, "), em("volume", .noWS="outside"),"(número), páginas inicial–final do artigo. https://doi.org/xxxx") 
+    # 21+ autores
 } else if (params$referencias == "CitekeyArticle21") {
     p("Autor, A. A., Autor, B. B., Autor, C. C., Autor, D. D., Autor, E. E., Autor, F. F., Autor, G. G., Autor, H. H., Autor, I. I., Autor, J. J., Autor, K. K., Autor, L. L., Autor, M. M., Autor, N. N., Autor, O. O., Autor, P. P., Autor, Q. Q., Autor, R. R., Autor, S. S., … Autor, V. V. (ano). Título do artigo", em("Título do periódico, "), em("volume", .noWS="outside"),"(número), páginas inicial–final do artigo. https://doi.org/xxxx") 
     # Autor institucional
 } else if (params$referencias == "CitekeyGroupBook") {
-    p("Nome do grupo. (ano).", em("Título do livro"), "(N.ª ed, Vol. M) [se houver].", "Nome da editora.")
+    p("Nome do grupo. (ano).", em("Título do livro"), "(N.ª ed, Vol. M) [não indicar 1ª edição].", "Nome da editora.")
     # Livro
 } else if (params$referencias == "CitekeyBook") {
-    p("Autor, A. A. (ano).", em("Título do livro"), "(N.ª ed., Vol. M) [se houver].", "Nome da editora.", "https://doi.org/xxxx [se houver]")
+    p("Autor, A. A. (ano).", em("Título do livro"), "(N.ª ed., Vol. M) [não indicar 1ª edição].", "Nome da editora.", "https://doi.org/xxxx [se houver]")
     # Capítulo de livro
 } else if (params$referencias == "CitekeyInbook") {
-    p("Autor, A. A. (ano).", "Título do capítulo.", "Em E. E. Editor & F. F. Editor (Eds.),", em("Título do livro"), "(N.ª ed., Vol. M [se houver], pp. inicial--final).", "Nome da editora. https://doi.org/xxxxx [se houver]")
+    p("Autor, A. A. (ano).", "Título do capítulo.", "Em E. E. Editor & F. F. Editor (Eds.),", em("Título do livro"), "(N.ª ed., Vol. M [não indicar 1ª edição], pp. inicial–final).", "Nome da editora. https://doi.org/xxxxx [se houver]")
     # Trabalho apresentado em congresso
 } else if (params$referencias == "CitekeyInproceedings") {
     p("Apresentador, A. A., & Apresentador, B. B. (Ano, Mês dia inicial–dia final).", em("Título da contribuição"), "[Tipo da contribuição].", "Nome do congresso, Localização.", "DOI (https://doi.org/xxxx) ou URL (https://xxxx)")
@@ -63,7 +63,7 @@ apa7norms <- if (params$referencias %in% c("CitekeyArticle")) {
     p("Autor, A. A. (ano).", em("Título da tese"), "[Tese de doutorado, Nome da Instituição].", "Repositório. https://xxxx")
     # Livro publicado por editores
 } else if (params$referencias == "CitekeyProceedings") {
-    p("Editor, E. E., & Editor, F. F. (Eds.). (ano).", em("Título do livro"), "(N.ª ed., Vol. M) [se houver].", "Nome da editora.", "https://doi.org/xxxxx [se houver]")
+    p("Editor, E. E., & Editor, F. F. (Eds.). (ano).", em("Título do livro"), "(N.ª ed., Vol. M) [não indicar 1ª edição].", "Nome da editora.", "https://doi.org/xxxxx [se houver]")
     # Trabalho não publicado
 } else if (params$referencias == "CitekeyUnpublished") {
     p("Autor, A. A. & Autor, B. B. (ano).", em("Título do trabalho"), "[Manuscrito não publicado/ Manuscrito em preparação/ Manuscrito submetido para publicação].", "Fonte do trabalho (e.g., Nome do departamento, Nome da universidade).", "https://xxxx [se houver]")
@@ -157,13 +157,14 @@ abntnorms <- if (params$referencias %in% c("CitekeyArticle")) {
     p("AUTOR, A. A. Título do capítulo. ", em("In", .noWS="outside"), ":", "EDITOR, E. E. (ed./coord./org.). " , strong("Título do livro", .noWS="outside"), ". N. ed. [não indicar 1ª edição]", "Cidade: Nome da editora, ano. p. páginas inicial–final do capítulo. ISBN XX-XXXX-XXX-X [elemento complementar].")
     # Trabalho apresentado em congresso
 } else if (params$referencias == "CitekeyInproceedings") {
-    p("AUTOR, A. A.; AUTOR, B. B. Título do trabalho. ", em("In", .noWS="outside"), " NOME DO EVENTO. numeração do evento [se houver]. ano, local (cidade) de realização. ", strong("Título do documento", .noWS="outside"), ". Local de publicação (cidade): Editora, ano. p. páginas inicial–final do artigo. Informação de disponibilidade em meio eletrônico. [se houver]")
+    p("AUTOR, A. A.; AUTOR, B. B. Título do trabalho. ", em("In", .noWS="outside"), " NOME DO EVENTO. numeração do evento [se houver]. ano, local (cidade) de realização. ", strong("Título do documento", .noWS="outside"), ". Local de publicação (cidade): Editora, ano. p. páginas inicial–final do artigo. Informação de disponibilidade em meio eletrônico. [se houver]",
+      p("Para trabalhos somente apresentados, recomenda-se como ordem de elementos essenciais: autor, título, subtítulo (se houver) e data de apresentação."))
     # Dissertação de mestrado
 } else if (params$referencias == "CitekeyMastersthesis") {
-    p("SOBRENOME, Nome. ", strong("Título do trabalho", .noWS="outside"), ": subtítulo.", "Ano da defesa.", "Tipo de documento (Grau e Área) – Vinculação acadêmica, Cidade, Ano da defesa.")
+    p("SOBRENOME, Nome. ", strong("Título do trabalho", .noWS="outside"), ": subtítulo.", "Ano de depósito.", "Tipo de documento (Grau e Área) – Vinculação acadêmica, Cidade, Data de apresentação ou defesa.")
     # Tese de doutorado
 } else if (params$referencias == "amaral15") {
-    p("SOBRENOME, Nome. ", strong("Título do trabalho", .noWS="outside"), ": subtítulo.", "Ano da defesa.", "Tipo de documento (Grau e Área) – Vinculação acadêmica, Cidade, Ano da defesa.")
+    p("SOBRENOME, Nome. ", strong("Título do trabalho", .noWS="outside"), ": subtítulo.", "Ano de depósito.", "Tipo de documento (Grau e Área) – Vinculação acadêmica, Cidade, Data de apresentação ou defesa.")
     # Livro publicado por editores
 } else if (params$referencias == "CitekeyProceedings") {
     p("Editor, E. E.; Editor, F. F. (ed./coord./org.). ", strong("Título do livro", .noWS="outside"), ". N. ed. [não indicar 1ª edição]", "Cidade: Nome da editora, ano.")
@@ -186,14 +187,14 @@ abntnorms <- if (params$referencias %in% c("CitekeyArticle")) {
 # ABNT exemplos ----------------------------------------------------------
 
 abntex <- if (params$referencias == "CitekeyArticle") {
-    p("BORSBOOM, D. The Attack of the Psychometricians. ", strong("Psychometrika", .noWS="outside"), ", [", em("S. l.", .noWS="outside"), "], v. 71, n. 3, p. 425–440, set. 2006.",
+    p("BORSBOOM, D. The Attack of the Psychometricians. ", strong("Psychometrika", .noWS="outside"), ", [", em("S. l.", .noWS="outside"), "], v. 71, n. 3, p. 425–440, 2006.",
       p("Obs: Utilize a expressão sine loco, abreviada, entre colchetes [", em("s. l.", .noWS="outside"), "], caso não seja possível identificar o local de publicação."))
     # 2 Autores
 } else if (params$referencias == "CitekeyArticle2") {
     p("KASHDAN, T. B.; ROTTENBERG, J. Psychological flexibility as a fundamental aspect of health. ", strong("Clinical Psychology Review", .noWS="outside"), ", [", em("S. l.", .noWS="outside"), "],  v. 30, n. 7, p. 865–878, 2010.")
     # 3 autores
 } else if  (params$referencias == "CitekeyArticle3") {
-    p("KASHDAN, T. B.; ROTTENBERG, J. Psychological flexibility as a fundamental aspect of health. ", strong("Perspectives on Psychological Science", .noWS="outside"), ", Washington, v. 30, n. 7, p. 865–878, 2010.")
+    p("WIJSEN, L. D.; BORSBOOM, D.; ALEXANDROVA , A. Values in Psychometrics. ", strong("Perspectives on Psychological Science", .noWS="outside"), ", Washington, DC, v. 17, n. 3, p. 788–804, 2022.")
     # 4+ autores
 } else if (params$referencias == "CitekeyArticle4") {
     p("BLANKEN, T. F.", em("et al."), "Network Outcome Analysis Identifies Difficulty Initiating Sleep as a Primary Target for Prevention of Depression: A 6-Year Prospective Study. ", strong("Sleep", .noWS="outside"),  ", Rochester, MN, v. 43, n. 5, p. 1–6, 2020.")
@@ -208,13 +209,13 @@ abntex <- if (params$referencias == "CitekeyArticle") {
     p("AMERICAN PSYCHIATRIC ASSOCIATION. ", strong("Manual Diagnóstico e Estatístico de Transtornos Mentais", .noWS="outside"), ". 5. ed. Porto Alegre: Artmed, 2014.")
     # Livro
 } else if (params$referencias == "CitekeyBook") {
-    p("Susskind, L., & Hrabovsky, G. (2014). ", strong("Classical mechanics: the theoretical minimum", .noWS="outside"), ". New York, NY: Penguin Random House, 2014")
+    p("SUSSKIND, L.; HRABOVSKY, G. (2014). ", strong("Classical mechanics: the theoretical minimum", .noWS="outside"), ". New York, NY: Penguin Random House, 2014.")
     # Capítulo de livro
 } else if (params$referencias == "CitekeyInbook") {
-    p("BALSAM, K. F. et al. Affirmative cognitive behavior therapy with sexual and gender minority people. ", em("In", .noWS="outside"), ":", "IWAMASA, G. Y.; HAYS, P. A. (ed.). " , strong("Culturally responsive cognitive behavior therapy: Practice and supervision", .noWS="outside"), ". 2. ed.", "Washington, DC: American Psychological Association, 2006. p. 7–13. ISBN 1433830167.")
+    p("BALSAM, K. F.", em("et al."), "Affirmative cognitive behavior therapy with sexual and gender minority people. ", em("In", .noWS="outside"), ":", "IWAMASA, G. Y.; HAYS, P. A. (ed.). " , strong("Culturally responsive cognitive behavior therapy: Practice and supervision", .noWS="outside"), ". 2. ed.", "Washington, DC: American Psychological Association, 2006. p. 7–13. ISBN 1433830167.")
     # Trabalho apresentado em congresso
 } else if (params$referencias == "CitekeyInproceedings") {
-    p("PEARSON, J. Fat talk and its effects on state-based body image in women. ", em("In", .noWS="outside"), " AUSTRALIAN PSYCHOLOGICAL SOCIETY CONGRESS. 6. 2018, Sydney, NSW. ", strong("Proceedings of the 6th Nordic Conf. on Human-Computer Interaction", .noWS="outside"), ". Sydney, NSW: Australian Psychological Society, 2018. p. 27–30. http://bit.ly/2XGSThP")
+    p("PEARSON, J. Fat talk and its effects on state-based body image in women. ", em("In", .noWS="outside"), " AUSTRALIAN PSYCHOLOGICAL SOCIETY CONGRESS. 2018, Sydney, NSW. ", strong("Proceedings of the Australian Psychological Society Congress", .noWS="outside"), ". Sydney, NSW: Australian Psychological Society, 2018. p. 27–30. http://bit.ly/2XGSThP")
     # Dissertação de mestrado
 } else if (params$referencias == "CitekeyMastersthesis") {
     p("RODRIGUES, Ana Lúcia Aquilas. ", strong("Impacto de um programa de exercícios no local de trabalho sobre o nível de atividade física e o estágio de prontidão para a mudança de comportamento", .noWS="outside"), ".", "2009.", "Dissertação (Mestrado em Fisiopatologia Experimental) – Faculdade de Medicina, Universidade de São Paulo, São Paulo, 2009. https://www.teses.usp.br/teses/disponiveis/5/5160/tde-24092009-161713/publico/AnaLuciaAquilasRodrigues.pdf")
@@ -261,10 +262,10 @@ vancouvernorms <- if (params$referencias == "CitekeyArticle") {
     p("Autor AA, Autor BB. ", em("Título do livro: subtítulo.") ,"Nnd/th ed. [não indicar 1ª edição] Editora; ano. Acessado Mês DD, YYYY. URL [para e-books online]") 
     # Capítulo de livro
 } else if (params$referencias == "CitekeyInbook") {
-    p("Autor AA, Autor BB. Título do capítulo. In Editor EE, Editor FF, Editor GG, eds.", em("Título do livro: subtítulo.") ,"Nnd ed. [não indicar 1ª edição] Editora; ano:páginas inicial–final.")
+    p("Autor AA, Autor BB. Título do capítulo. In: Editor EE, Editor FF, Editor GG, eds.", em("Título do livro: subtítulo.") ,"Nnd ed. [não indicar 1ª edição] Editora; ano:páginas inicial–final.")
     # Trabalho apresentado em congresso
 } else if (params$referencias == "CitekeyInproceedings") {
-    p("Autor AA, Autor BB. Título do trabalho. Tipo de apresentação presented at: Nome do congresso; Mês dia inicial–final, Ano; Cidade, Sigla do Estado. Acessado Mês DD, YYYY. URL [para trabalhos online]")
+    p("Autor AA, Autor BB. Título do trabalho. Tipo de apresentação presented at: Nome do congresso; Mês dia inicial–final, Ano; Cidade, Sigla do Estado. Acessed Mês DD, YYYY. URL [para trabalhos online]")
     # Dissertação de mestrado
 } else if (params$referencias == "CitekeyMastersthesis") {
     p("Autor AA. ", em("Título da dissertação: subtítulo.") ,"Master’s thesis. Nome da Universidade; Ano. Accessed Mês DD, YYYY. URL [para dissertações online]") 
@@ -273,16 +274,15 @@ vancouvernorms <- if (params$referencias == "CitekeyArticle") {
     p("Autor AA. ", em("Título da tese: subtítulo.") ,"Dissertation. Nome da Universidade; Ano. Accessed Mês DD, YYYY. URL [para dissertações online]")
     # Livro publicado por editores
 } else if (params$referencias == "CitekeyProceedings") {
-    p("Editor EE, Editor FF, eds. ", em("Título do livro: subtítulo.") ,"Nnd/th ed. [apenas edição maior do que a 1ª] Editora; ano. Acessado Mês DD, YYYY. URL [para e-books online]")
+    p("Editor EE, Editor FF, eds. ", em("Título do livro: subtítulo.") ,"Nnd/th ed. [não indicar 1ª edição] Editora; ano. Acessado Mês DD, YYYY. URL [para e-books online]")
     # Trabalho não publicado
 } else if (params$referencias == "CitekeyUnpublished") {
     p(h4("Aceito para publicação mas não publicado:"), 
-      "Artigos das revistas JAMA Network não incluem estes materiais como referências formais, em especial artigos de periódicos que ainda não foram publicados. Para livros, pode ser utilizada o seguinte modelo:",
+      p("Artigos das revistas JAMA Network não incluem estes materiais como referências formais, em especial artigos de periódicos que ainda não foram publicados. Para livros, pode ser utilizada o seguinte modelo:"),
       p("Autor AA. ", em("Título do livro: subtítulo.") ,"Editora. Forthcoming Ano."),
       h4("Material submetido para publicação mas ainda não aceito:"),
-      "Não devem ser incluídos na lista de referências. Deve ser mencionada no texto como unpublished data:",
-      br(),
-      "These findings have recently been corroborated (H. E. Marman, MD, unpublished data, January 2015)."
+      p("Não devem ser incluídos na lista de referências. Deve ser mencionada no texto como unpublished data:"),
+      p("These findings have recently been corroborated (H. E. Marman, MD, unpublished data, January 2015).")
       )
     # Blog, revista ou jornal online
 } else if (params$referencias == "blogpost") {
@@ -298,13 +298,13 @@ vancouvernorms <- if (params$referencias == "CitekeyArticle") {
 vancouverex <- if (params$referencias == "CitekeyArticle") {
     p("(1) Borsboom D. The Attack of the Psychometricians.", em("Psychometrika.") ,"2006; 71(3):425–440. doi:10.1007/s11336-006-1447-6")
 } else if (params$referencias == "CitekeyArticle2") {
-    p("(1) Kashdan TB, Rottenberg J. Psychological flexibility as a fundamental aspect of health.", em("Clinical Psychology Review.") ,"2010;30(7):865–878. doi:10.1016/j.cpr.2010.03.001")
+    p("(1) Kashdan TB, Rottenberg J. Psychological flexibility as a fundamental aspect of health.", em("Clin Psychol Rev.") ,"2010;30(7):865–878. doi:10.1016/j.cpr.2010.03.001")
 } else if (params$referencias == "CitekeyArticle3") {
-    p("(1) Wijsen LD, Borsboom D, Alexandrova A. Values in Psychometrics.", em("Perspectives on Psychological Science.") ,"2022;17(3):788–804. doi:10.1177/17456916211014183")
+    p("(1) Wijsen LD, Borsboom D, Alexandrova A. Values in Psychometrics.", em("Perspect Psychol Sci.") ,"2022;17(3):788–804. doi:10.1177/17456916211014183")
 } else if (params$referencias == "CitekeyArticle4") {
     p("(1) Blanken TF, Borsboom D, Penninx BW, van Someren EJ. Network Outcome Analysis Identifies Difficulty Initiating Sleep as a Primary Target for Prevention of Depression: A 6-Year Prospective Study.", em("Sleep.") ,"2020;43(5):1–6. doi:10.1093/sleep/zsz288")
 } else if (params$referencias == "CitekeyArticle7") {
-    p("(1) Baglioni C, Battagliese G, Feige B, et al. Insomnia as a Predictor of Depression: A Meta-Analytic Evaluation of Longitudinal Epidemiological Studies.", em("Journal of Affective Disorders.") ,"2011;135(1):10–9. doi:10.1016/j.jad.2011.01.011")
+    p("(1) Baglioni C, Battagliese G, Feige B, et al. Insomnia as a Predictor of Depression: A Meta-Analytic Evaluation of Longitudinal Epidemiological Studies.", em("J Affect Disorders.") ,"2011;135(1):10–9. doi:10.1016/j.jad.2011.01.011")
     # 21+ Autores
 } else if (params$referencias == "CitekeyArticle21") {
     p("(1) Page MJ, McKenzie JE, Bossuyt PM, et al. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews.", em("BMJ.") ,"2021;372:n71. doi:10.1136/bmj.n71") 
@@ -316,7 +316,7 @@ vancouverex <- if (params$referencias == "CitekeyArticle") {
     p("(1) Susskind L, Hrabovsky G. ", em("Classical mechanics: the theoretical minimum.") ,"Penguin Random House; 2014.") 
     # Capítulo de livro
 } else if (params$referencias == "CitekeyInbook") {
-    p("(1) Balsam, KF, Martell CR, Jones KP, Safren SA. Affirmative cognitive behavior therapy with sexual and gender minority people. In Iwamasa GY, Hays PA, eds.", em("Culturally responsive cognitive behavior therapy: Practice and supervision.") ,"2nd ed. American Psychological Association; 2019:7–13.")
+    p("(1) Balsam KF, Martell CR, Jones KP, Safren SA. Affirmative cognitive behavior therapy with sexual and gender minority people. In: Iwamasa GY, Hays PA, eds.", em("Culturally responsive cognitive behavior therapy: Practice and supervision.") ,"2nd ed. American Psychological Association; 2019:7–13.")
     # Trabalho apresentado em congresso
 } else if (params$referencias == "CitekeyInproceedings") {
     p("(1) Pearson J. Fat talk and its effects on state-based body image in women. Poster presented at: Australian Psychological Society Congress; September 27–30, 2018; Sidney, NSW. Acessed March 07, 2022. http://bit.ly/2XGSThP")
@@ -377,3 +377,14 @@ if (params$norma == "apa7.csl") {
 **Citação entre parêntesis**: [@`r params$referencias`].
 
 **Citação narrativa**: @`r params$referencias`.
+
+```{r}
+
+if (params$norma == "vancouver.csl") {
+    p("Para citações narrativas na norma Vancouver, utilize o nome do autor seguido imediatamente da numeração da referência:",
+      p(strong("A pesquisa de Smith et al(22) diz que...")),
+      p("Para citações entre parêntesis, indique a numeração da citacão imediatamente após a informação, sem espaco:"),
+      p(strong("Diversos estudos relataram que o tratamento é ineficaz.(1–3,6)")))
+}
+```
+
