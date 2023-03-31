@@ -42,7 +42,7 @@ apa7norms <- if (params$referencias %in% c("CitekeyArticle")) {
     p("Autor, A. A., Autor, B. B., Autor, C. C., Autor, D. D., Autor, E. E., Autor, F. F., & Autor, G. G. (ano). Título do artigo", em("Título do periódico, "), em("volume", .noWS="outside"),"(número), páginas inicial–final do artigo. https://doi.org/xxxx") 
     # 21+ autores
 } else if (params$referencias == "CitekeyArticle21") {
-    p("Autor, A. A., Autor, B. B., Autor, C. C., Autor, D. D., Autor, E. E., Autor, F. F., Autor, G. G., Autor, H. H., Autor, I. I., Autor, J. J., Autor, K. K., Autor, L. L., Autor, M. M., Autor, N. N., Autor, O. O., Autor, P. P., Autor, Q. Q., Autor, R. R., Autor, S. S., … Autor, V. V. (ano). Título do artigo", em("Título do periódico, "), em("volume", .noWS="outside"),"(número), páginas inicial–final do artigo. https://doi.org/xxxx") 
+    p("Autor, A. A., Autor, B. B., Autor, C. C., Autor, D. D., Autor, E. E., Autor, F. F., Autor, G. G., Autor, H. H., Autor, I. I., Autor, J. J., Autor, K. K., Autor, L. L., Autor, M. M., Autor, N. N., Autor, O. O., Autor, P. P., Autor, Q. Q., Autor, R. R., Autor, S. S., … Autor, V. V. (ano). Título do artigo.", em("Título do periódico, "), em("volume", .noWS="outside"),"(número), páginas inicial–final do artigo. https://doi.org/xxxx") 
     # Autor institucional
 } else if (params$referencias == "CitekeyGroupBook") {
     p("Nome do grupo. (ano).", em("Título do livro"), "(N.ª ed, Vol. M) [não indicar 1ª edição].", "Nome da editora.")
@@ -71,8 +71,8 @@ apa7norms <- if (params$referencias %in% c("CitekeyArticle")) {
 } else if (params$referencias == "blogpost") {
     p("Autor, A. A. & Autor, B. B.", strong("ou"), "Nome do Grupo/Instituição.", "(ano, mês dia [se houver]).", em("Título do trabalho."), "Nome do site.", "Recuperado em Mês dia, ano [apenas se o conteúdo não for uma página estática ou arquivada], de https://xxxxx")
     # Testes, escalas e inventários
-} else if (params$referencias == "testes") {
-    p("Autor, A. A. & Autor, B. B.", "(ano).", em("Título do teste."), "https://xxxxx")
+} else if (params$referencias == "patente") {
+    p("Inventor, A. A.", "(ano de emissão da patente).", em("Título da patente"), "(número da patente). Fonte. URL")
 }
 
 
@@ -123,9 +123,9 @@ apa7ex <- if (params$referencias == "CitekeyArticle") {
     # Blog, revista ou jornal online
 } else if (params$referencias == "blogpost") {
     p("Khan, I. (2020, Fevereiro 17).", em("Why Animal Crossing Is the Game for the Coronavirus Moment."), "The New York Times.", "https://www.nytimes.com/2020/04/07/arts/animal-crossing-covid-coronavirus-popularity-millennials.html")
-    # Testes, escalas e inventários
-} else if (params$referencias == "testes") {
-    p("Project Implicit. (n.d.).", em("Gender–Science IAT."), "https://implicit.harvard.edu/implicit/takeatest.html")
+    # Patente
+} else if (params$referencias == "patente") {
+    p("Bertazzoli, R.", "(2008).", em("Eletrodos de difusão gasosa modificados com catalisadores redox, processo e reator eletroquímico de síntese de peróxido de hidrogênio utilizando os mesmos"), "(BR No. PI0600460-1A). Instituto Nacional da Propriedade Industrial.")
 }
 ```
 
@@ -178,9 +178,9 @@ abntnorms <- if (params$referencias %in% c("CitekeyArticle")) {
     # Blog, revista ou jornal online
 } else if (params$referencias == "blogpost") {
     p("AUTOR, A. A. Título do artigo. ", strong("Título do jornal/página", .noWS="outside"), ", Local de publicação (cidade), numeração do ano e/ou volume,  número [se houver], data de publicação, seção, caderno ou parte do jornal e a paginação correspondente [se houver]. Disponível em: http://xxxxx. Acesso em: Dia mês. Ano.", p("Quando não houver seção, caderno ou parte, a paginação do artigo ou matéria precede a data."))
-    # Testes, escalas e inventários
-} else if (params$referencias == "testes") {
-    p("AUTOR, A. A.; Autor, B. B.", strong("Título do teste."), "https://xxxxx")
+    # Patentes
+} else if (params$referencias == "patente") {
+    p("AUTOR, A. A.", strong("Título da patente"), ". Depositante: [nomes do depositante e/ou titular]. Procurador: [nome do procurador (se houver)]. número da patente. Depósito: [data de depósito]. Concessão: [data de concessão da patente (se houver)].")
 }
 
 
@@ -230,10 +230,10 @@ abntex <- if (params$referencias == "CitekeyArticle") {
     p("YOO, J. ", em("et al."), strong(" Linking positive affect to blood lipids", .noWS="outside"), ": A cultural perspective.", "2016. Não publicado.")
     # Blog, revista ou jornal online
 } else if (params$referencias == "blogpost") {
-    p("KHAN, I. Why Animal Crossing Is the Game for the Coronavirus Moment. ", strong("The New York Times", .noWS="outside"), ". Disponível em: https://www.nytimes.com/2020/04/07/arts/animal-crossing-covid-coronavirus-popularity-millennials.html. Acesso em: 07 mar. 2022.")
-    # Testes, escalas e inventários
-} else if (params$referencias == "testes") {
-    p("Project Implicit. (n.d.).", em("Gender–Science IAT."), "https://implicit.harvard.edu/implicit/takeatest.html")
+    p("KHAN, I. Why Animal Crossing Is the Game for the Coronavirus Moment. ", strong("The New York Times", .noWS="outside"), ", 07 maio 2020. Disponível em: https://www.nytimes.com/2020/04/07/arts/animal-crossing-covid-coronavirus-popularity-millennials.html. Acesso em: 07 mar. 2022.")
+    # Patentes
+} else if (params$referencias == "patente") {
+    p("BERTAZZOLI, Rodnei", strong("Eletrodos de difusão gasosa modificados com catalisadores redox, processo e reator eletroquímico de síntese de peróxido de hidrogênio utilizando os mesmos"), ". Depositante: Universidade Estadual de Campinas. Procurador: Maria Cristina Valim Lourenço Gomes. BR n. PI0600460-1A. Depósito: 27 jan. 2006. Concessão: 25 mar. 2008.")
 }
 ```
 
@@ -287,9 +287,9 @@ vancouvernorms <- if (params$referencias == "CitekeyArticle") {
     # Blog, revista ou jornal online
 } else if (params$referencias == "blogpost") {
     p("Autor AA. Título do item citado ou nome da organização caso não haja um título. Nome do website. Mês DD, YYYY. Updated Mês DD, YYYY. Accessed Mês DD, YYYY. http://xxxxx")
-    # Testes, escalas e inventários
-} else if (params$referencias == "testes") {
-    p("Autor, A. A. & Autor, B. B.", "(ano).", em("Título do teste."), "https://xxxxx")
+    # Patentes
+} else if (params$referencias == "patente") {
+    p("Autor AA, inventor; Cessionária, assignee. Nome da patente. Número da patente. data de emissão da patente.")
 }
 
 
@@ -335,12 +335,160 @@ vancouverex <- if (params$referencias == "CitekeyArticle") {
     # Blog, revista ou jornal online
 } else if (params$referencias == "blogpost") {
     p("(1) Khan I. Why Animal Crossing Is the Game for the Coronavirus Moment. The New York Times. 2020. February 17, 2020. Accessed March 07, 2022. https://www.nytimes.com/2020/04/07/arts/animal-crossing-covid-coronavirus-popularity-millennials.html")
-    # Testes, escalas e inventários
-} else if (params$referencias == "testes") {
-    p("Autor, A. A. & Autor, B. B.", "(ano).", em("Título do teste."), "https://xxxxx")
+    # Patentes
+} else if (params$referencias == "patente") {
+    p("(1) Bertazzoli R, inventor; Universidade Estadual de Campinas, assignee. Eletrodos de difusão gasosa modificados com catalisadores redox, processo e reator eletroquímico de síntese de peróxido de hidrogênio utilizando os mesmos. BR PI0600460-1A. March 25, 2008.")
 }
 ```
 
+```{r citacao-narrativa}
+abntcit <- if (params$referencias == "CitekeyArticle") {
+    "Borsboom (2006)"
+    # 2 Autores
+} else if (params$referencias == "CitekeyArticle2") {
+    "Kashdan e Rottenberg (2010)"
+    # 3 autores
+} else if  (params$referencias == "CitekeyArticle3") {
+    "Wijsen, Borsboom e Alexandrova (2022)"
+    # 4+ autores
+} else if (params$referencias == "CitekeyArticle4") {
+    "Blanken et al. (2020)"
+    # 7+
+} else if (params$referencias == "CitekeyArticle7") {
+    "Baglioni et al. (2011)"
+    # 21+ autores
+} else if (params$referencias == "CitekeyArticle21") {
+    "Page et al. (2020)"
+    # Autor institucional
+} else if (params$referencias == "CitekeyGroupBook") {
+    "American Psychiatric Association (2014)"
+    # Livro
+} else if (params$referencias == "CitekeyBook") {
+    "Susskind e Hrabovsky (2014)"
+    # Capítulo de livro
+} else if (params$referencias == "CitekeyInbook") {
+    "Balsam et al. (2006)"
+    # Trabalho apresentado em congresso
+} else if (params$referencias == "CitekeyInproceedings") {
+    "Pearson (2018)"
+    # Dissertação de mestrado
+} else if (params$referencias == "CitekeyMastersthesis") {
+    "Rodrigues (2009)"
+    # Tese de doutorado
+} else if (params$referencias == "amaral15") {
+    "Amaral (2015)"
+    # Livro publicado por editores
+} else if (params$referencias == "CitekeyProceedings") {
+    "Damásio e Borsa (2018)"
+    # Trabalho não publicado
+} else if (params$referencias == "CitekeyUnpublished") {
+    "Yoo et al. (2016)"
+    # Blog, revista ou jornal online
+} else if (params$referencias == "blogpost") {
+    "Khan (2020)"
+    # Patentes
+} else if (params$referencias == "patente") {
+    "Bertazzoli (2008)"
+}
+
+apacit <- if (params$referencias == "CitekeyArticle") {
+    "Borsboom (2006)"
+    # 2 Autores
+} else if (params$referencias == "CitekeyArticle2") {
+    "Kashdan e Rottenberg (2010)"
+    # 3 autores
+} else if  (params$referencias == "CitekeyArticle3") {
+    "Wijsen et al. (2022)"
+    # 4+ autores
+} else if (params$referencias == "CitekeyArticle4") {
+    "Blanken et al. (2020)"
+    # 7+
+} else if (params$referencias == "CitekeyArticle7") {
+    "Baglioni et al. (2011)"
+    # 21+ autores
+} else if (params$referencias == "CitekeyArticle21") {
+    "Page et al. (2020)"
+    # Autor institucional
+} else if (params$referencias == "CitekeyGroupBook") {
+    "American Psychiatric Association (2014)"
+    # Livro
+} else if (params$referencias == "CitekeyBook") {
+    "Susskind e Hrabovsky (2014)"
+    # Capítulo de livro
+} else if (params$referencias == "CitekeyInbook") {
+    "Balsam et al. (2006)"
+    # Trabalho apresentado em congresso
+} else if (params$referencias == "CitekeyInproceedings") {
+    "Pearson (2018)"
+    # Dissertação de mestrado
+} else if (params$referencias == "CitekeyMastersthesis") {
+    "Rodrigues (2009)"
+    # Tese de doutorado
+} else if (params$referencias == "amaral15") {
+    "Amaral (2015)"
+    # Livro publicado por editores
+} else if (params$referencias == "CitekeyProceedings") {
+    "Damásio e Borsa (2018)"
+    # Trabalho não publicado
+} else if (params$referencias == "CitekeyUnpublished") {
+    "Yoo et al. (2016)"
+    # Blog, revista ou jornal online
+} else if (params$referencias == "blogpost") {
+    "Khan (2020)"
+    # Patentes
+} else if (params$referencias == "patente") {
+    "Bertazzoli (2008)"
+}
+
+vancouvercit <- if (params$referencias == "CitekeyArticle") {
+    "Borsboom(1)"
+    # 2 Autores
+} else if (params$referencias == "CitekeyArticle2") {
+    "Kashdan e Rottenberg(1)"
+    # 3 autores
+} else if  (params$referencias == "CitekeyArticle3") {
+    "Wijsen et al(1)"
+    # 4+ autores
+} else if (params$referencias == "CitekeyArticle4") {
+    "Blanken et al(1)"
+    # 7+
+} else if (params$referencias == "CitekeyArticle7") {
+    "Baglioni et al(1)"
+    # 21+ autores
+} else if (params$referencias == "CitekeyArticle21") {
+    "Page et al(1)"
+    # Autor institucional
+} else if (params$referencias == "CitekeyGroupBook") {
+    "American Psychiatric Association(1)"
+    # Livro
+} else if (params$referencias == "CitekeyBook") {
+    "Susskind e Hrabovsky(1)"
+    # Capítulo de livro
+} else if (params$referencias == "CitekeyInbook") {
+    "Balsam et al(1)"
+    # Trabalho apresentado em congresso
+} else if (params$referencias == "CitekeyInproceedings") {
+    "Pearson(1)"
+    # Dissertação de mestrado
+} else if (params$referencias == "CitekeyMastersthesis") {
+    "Rodrigues(1)"
+    # Tese de doutorado
+} else if (params$referencias == "amaral15") {
+    "Amaral(1)"
+    # Livro publicado por editores
+} else if (params$referencias == "CitekeyProceedings") {
+    "Damásio e Borsa(1)"
+    # Trabalho não publicado
+} else if (params$referencias == "CitekeyUnpublished") {
+    "Yoo et al(1)"
+    # Blog, revista ou jornal online
+} else if (params$referencias == "blogpost") {
+    "Khan(1)"
+    # Patentes
+} else if (params$referencias == "patente") {
+    "Bertazzoli(1)"
+}
+```
 
 ## Formato
 
@@ -374,17 +522,19 @@ if (params$norma == "apa7.csl") {
 
 <hr width="100%; opacity="0.2" />
 
-**Citação entre parêntesis**: [@`r params$referencias`].
+**Citação entre parênteses**: [@`r params$referencias`].
 
-**Citação narrativa**: @`r params$referencias`.
+**Citação narrativa**: `r if (params$norma == "apa7.csl") {apacit} else if (params$norma == "planeta-zotero-abnt.csl"){abntcit} else if (params$norma =="vancouver.csl"){vancouvercit}`.
 
 ```{r}
+p("Para referências com mais de dois autores ou grupos (APA/ Vancouver) ou três (ABNT) inclua na citação narrativa o sobrenome do primeiro autor seguido de 'et al', 'e coautores', ou 'e colaboradores'.")
 
 if (params$norma == "vancouver.csl") {
     p("Para citações narrativas na norma Vancouver, utilize o nome do autor seguido imediatamente da numeração da referência:",
       p(strong("A pesquisa de Smith et al(22) diz que...")),
-      p("Para citações entre parêntesis, indique a numeração da citacão imediatamente após a informação, sem espaco:"),
+      p("Para citações entre parênteses, indique a numeração da citacão imediatamente após a informação, sem espaco:"),
       p(strong("Diversos estudos relataram que o tratamento é ineficaz.(1–3,6)")))
+      
 }
 ```
 

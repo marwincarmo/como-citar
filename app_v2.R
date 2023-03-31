@@ -25,14 +25,14 @@ referencias_opcoes <- c("Artigo com um autor" = "CitekeyArticle",
                         #"Anais de congressos" = "CitekeyProceedings",
                         #"Relatório técnico" = "CitekeyTechreport",
                         "Trabalho não publicado" = "CitekeyUnpublished",
-                        "Webpages e Websites" = "blogpost"
+                        "Webpages e Websites" = "blogpost",
                         #"Artigo de revista" = "magazine",
                         #"Artigo de jornal" = "newspaper",
                         #"Dicionario" = "dictionary",
-                        #"Testes, escalas e inventários sem manual" = "testes"
+                        "Patente" = "patente"
 )
 
-normas_opcoes <-  c(#"ABNT (NBR 6023)" = "associacao-brasileira-de-normas-tecnicas.csl", 
+normas_opcoes <-  c(#"ABNT (NBR 6023) of" = "associacao-brasileira-de-normas-tecnicas.csl", 
     "ABNT (NBR 6023)" = "planeta-zotero-abnt.csl",
     "APA (7th ed.)" = "apa7.csl", 
     "Vancouver (AMA 11th ed.) " = "vancouver.csl"
