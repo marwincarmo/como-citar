@@ -5,10 +5,10 @@ account: psicometriaonline
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 8262181
-bundleId: 7032866
+bundleId: 7185963
 url: https://psicometriaonline.shinyapps.io/comocitar/
-when: 1680268206.27691
-lastSyncTime: 1680268206.27693
+when: 1683489282.07025
+lastSyncTime: 1683489282.07026
 asMultiple: FALSE
 asStatic: FALSE
 ignoredFiles: app_old.R|app_v0.R|testes.html|testes.log|testes.Rmd|testes.tex

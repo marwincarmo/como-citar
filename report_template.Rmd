@@ -527,7 +527,7 @@ if (params$norma == "apa7.csl") {
 **Citação narrativa**: `r if (params$norma == "apa7.csl") {apacit} else if (params$norma == "planeta-zotero-abnt.csl"){abntcit} else if (params$norma =="vancouver.csl"){vancouvercit}`.
 
 ```{r}
-p("Para referências com mais de dois autores ou grupos (APA/ Vancouver) ou três (ABNT) inclua na citação narrativa o sobrenome do primeiro autor seguido de 'et al', 'e coautores', ou 'e colaboradores'.")
+p("Para referências com mais de dois (APA/ Vancouver) ou três (ABNT) autores ou grupos, inclua na citação narrativa o sobrenome do primeiro autor seguido de 'et al', 'e coautores', ou 'e colaboradores'.")
 
 if (params$norma == "vancouver.csl") {
     p("Para citações narrativas na norma Vancouver, utilize o nome do autor seguido imediatamente da numeração da referência:",
